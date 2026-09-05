@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CareerBoard - Explore verified high-impact tech, design, and product jobs with upfront salaries and simple, transparent applications.">
+  <title>CareerBoard | Find Your Next High-Impact Career Move</title>
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <!-- Logo Branding -->
+      <a href="index.html" class="brand-logo" aria-label="CareerBoard Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+        </div>
+        <span>Career<span class="brand-highlight">Board</span></span>
+      </a>
+
+      <!-- Navigation -->
+      <nav class="header-nav" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link active" id="navFindJobs" aria-current="page">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Find Jobs</span>
+        </a>
+        <a href="#saved" class="nav-link" id="navSavedJobs">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Saved</span>
+          <span class="nav-badge" id="savedJobsBadge">0</span>
+        </a>
+        <a href="#applied" class="nav-link" id="navAppliedJobs">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span>Applied</span>
+          <span class="nav-badge accent" id="appliedJobsBadge">0</span>
+        </a>
+      </nav>
+
+      <!-- Action Area -->
+      <div class="header-actions">
+        <button type="button" class="btn btn-secondary btn-sm" id="btnHelpModal" aria-label="Keyboard Shortcuts & About">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span>Help</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content" id="mainContent">
+
+    <!-- Hero Search Section -->
+    <section class="hero-section" aria-labelledby="heroTitle">
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span>Verified Roles & Clear Salaries</span>
+        </div>
+        <h1 class="hero-title" id="heroTitle">
+          Discover Your Next <span class="hero-title-gradient">High-Impact</span> Role
+        </h1>
+        <p class="hero-subtitle">
+          Search hundreds of curated opportunities across top engineering, product, and design teams with transparent compensation and zero fluff.
+        </p>
+
+        <!-- Integrated Search Bar -->
+        <form class="search-hub-form" id="searchHubForm" role="search" onsubmit="event.preventDefault();">
+          <!-- Keyword Search Group -->
+          <div class="search-input-group">
+            <div class="search-input-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <label for="keywordSearchInput" class="sr-only">Job title, company, or keywords</label>
+            <input 
+              type="text" 
+              id="keywordSearchInput" 
+              class="search-input" 
+              placeholder="Job title, company, or keywords..." 
+              autocomplete="off"
+            >
+            <button type="button" class="search-clear-btn" id="clearKeywordBtn" aria-label="Clear keyword search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Location Selector / Input -->
+          <div class="search-input-group">
+            <div class="search-input-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <label for="locationSearchInput" class="sr-only">Location or Remote</label>
+            <input 
+              type="text" 
+              id="locationSearchInput" 
+              class="search-input" 
+              placeholder="Location (e.g. Remote, SF, NY)..." 
+              autocomplete="off"
+            >
+            <button type="button" class="search-clear-btn" id="clearLocationBtn" aria-label="Clear location search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Search CTA -->
+          <button type="submit" class="btn btn-primary" id="btnSearchSubmit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span>Search Jobs</span>
+          </button>
+        </form>
+
+        <!-- Quick Filter Tags -->
+        <div class="quick-search-tags" aria-label="Quick search tags">
+          <span class="quick-tag-label">Trending Searches:</span>
+          <button type="button" class="quick-tag-btn" data-tag="Remote">🌍 Remote</button>
+          <button type="button" class="quick-tag-btn" data-tag="React">⚛️ React</button>
+          <button type="button" class="quick-tag-btn" data-tag="TypeScript">📘 TypeScript</button>
+          <button type="button" class="quick-tag-btn" data-tag="Python">🐍 Python</button>
+          <button type="button" class="quick-tag-btn" data-tag="Design Systems">🎨 Design Systems</button>
+          <button type="button" class="quick-tag-btn" data-tag="Staff">🚀 Staff / Lead</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Section with Sidebar & Job Cards -->
+    <section class="dashboard-section" aria-label="Job Search Results and Filters">
+      <div class="container">
+        
+        <!-- Mobile Filter Trigger -->
+        <div class="mobile-filter-bar">
+          <button type="button" class="btn btn-secondary btn-sm" id="btnOpenMobileFilters">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            <span>Filters</span>
+            <span class="nav-badge" id="mobileFilterCountBadge" style="display:none;">0</span>
+          </button>
+          <div class="results-count-title" style="font-size: 0.95rem;">
+            <span id="mobileResultCount">0 jobs</span>
+          </div>
+        </div>
+
+        <!-- Backdrop for mobile drawer -->
+        <div class="filter-sidebar-backdrop" id="filterSidebarBackdrop"></div>
+
+        <div class="dashboard-layout">
+          
+          <!-- Filters Sidebar -->
+          <aside class="filter-sidebar" id="filterSidebar" aria-label="Job Filters">
+            <div class="filter-sidebar-header">
+              <div class="filter-sidebar-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+                <span>Filter Jobs</span>
+              </div>
+              <button type="button" class="btn btn-ghost btn-sm" id="btnClearAllFilters">Reset All</button>
+            </div>
+
+            <!-- Filter: Work Mode -->
+            <div class="filter-group">
+              <div class="filter-group-title">Work Mode</div>
+              <div class="filter-options-list" id="workModeFilterList">
+                <label class="filter-checkbox-label">
+                  <input type="checkbox" name="workMode" value="remote">
+                  <span>Remote</span>
+                  <span class="filter-count" id="countWorkModeRemote">0</span>
+                </label>
+                <label class="filter-checkbox-label">
+                  <input type="checkbox" name="workMode" value="hybrid">
+                  <span>Hybrid</span>
+                  <span class="filter-count" id="countWorkModeHybrid">0</span>
+                </label>
+                <label class="filter-checkbox-label">
+                  <input type="checkbox" name="workMode" value="onsite">
+                  <span>On-site</span>
+                  <span class="filter-count" id="countWorkModeOnsite">0</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Filter: Experience Level -->
+            <div class="filter-group">
+              <div class="filter-group-title">Experience Level</div>
+              <div class="filter-options-list" id="expFilterList">
+                <label class="filter-checkbox-label">
+                  <input type="checkbox" name="experienceLevel" value="entry">
+                  <span>Entry-Level / Intern</span>
+                  <span class="filter-count" id="countExpEntry">0</span>
+                </label>
+                <label class="filter-checkbox-label">
+                  <input type="checkbox" name="experienceLevel" value="mid">
+                  <span>Mid-Level (2-5 yrs)</span>
+                  <span class="filter-count" id="countExpMid">0</span>
+                </label>
+                <label class="filter-checkbox-label">
+                  <input type="checkbox" name="experienceLevel" value="senior">
+                  <span>Senior (5+ yrs)</span>
+                  <span class="filter-count" id="countExpSenior">0</span>
+                </label>
+                <label class="filter-checkbox-label">
+                  <input type="checkbox" name="experienceLevel" value="lead">
+                  <span>Staff / Lead</span>
+                  <span class="filter-count" id="countExpLead">0</span>
+                </label>
+                <label class="filter-checkbox-label">
+                  <input type="checkbox" name="experienceLevel" value="executive">
+                  <span>Executive / VP</span>
+                  <span class="filter-count" id="countExpExecutive">0</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Filter: Minimum Salary Range -->
+            <div class="filter-group">
+              <div class="filter-group-title">Minimum Salary</div>
+              <div class="salary-range-container">
+                <input 
+                  type="range" 
+                  id="salaryRangeInput" 
+                  class="salary-slider" 
+                  min="0" 
+                  max="250000" 
+                  step="10000" 
+                  value="0"
+                  aria-label="Minimum Annual Salary"
+                >
+                <div class="salary-labels">
+                  <span>Any Salary</span>
+                  <span class="salary-current-val" id="salaryDisplayVal">$0+</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Filter: Employment Type -->
+            <div class="filter-group">
+              <div class="filter-group-title">Employment Type</div>
+              <div class="filter-options-list" id="empTypeFilterList">
+                <label class="filter-checkbox-label">
+                  <input type="checkbox" name="empType" value="full-time">
+                  <span>Full-time</span>
+                  <span class="filter-count" id="countTypeFulltime">0</span>
+                </label>
+                <label class="filter-checkbox-label">
+                  <input type="checkbox" name="empType" value="contract">
+                  <span>Contract</span>
+                  <span class="filter-count" id="countTypeContract">0</span>
+                </label>
+                <label class="filter-checkbox-label">
+                  <input type="checkbox" name="empType" value="part-time">
+                  <span>Part-time</span>
+                  <span class="filter-count" id="countTypeParttime">0</span>
+                </label>
+                <label class="filter-checkbox-label">
+                  <input type="checkbox" name="empType" value="internship">
+                  <span>Internship</span>
+                  <span class="filter-count" id="countTypeInternship">0</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Filter: Popular Skills -->
+            <div class="filter-group">
+              <div class="filter-group-title">Skills & Technologies</div>
+              <div class="skills-chip-cloud" id="skillsChipCloud" aria-label="Filter by skills">
+                <!-- Injected dynamically via JS -->
+              </div>
+            </div>
+
+            <!-- Close button for mobile -->
+            <div style="margin-top: 1.5rem; display: none;" id="mobileCloseFilterWrapper">
+              <button type="button" class="btn btn-primary" style="width: 100%;" id="btnCloseMobileFilters">Done Filtering</button>
+            </div>
+          </aside>
+
+          <!-- Results Section -->
+          <div class="results-main-area">
+            
+            <!-- Controls Bar: Result Count, Active Tabs, Sorting -->
+            <div class="results-header-bar">
+              <div class="results-count-title">
+                <span id="resultsCount">0</span>
+                <span style="font-weight: 500; font-size: 1.05rem; color: var(--text-secondary);" id="resultsLabel">jobs available</span>
+              </div>
+
+              <div class="results-controls">
+                <!-- View Tabs: All vs Saved -->
+                <div class="view-tabs" role="tablist" aria-label="Job list filter views">
+                  <button type="button" class="view-tab-btn active" id="tabAllJobs" role="tab" aria-selected="true">All Roles</button>
+                  <button type="button" class="view-tab-btn" id="tabSavedJobs" role="tab" aria-selected="false">Saved (<span id="savedTabCount">0</span>)</button>
+                </div>
+
+                <!-- Sort Dropdown -->
+                <div class="sort-select-wrapper">
+                  <label for="sortOrderSelect" class="sr-only">Sort Jobs By</label>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="14" y2="12"></line>
+                    <line x1="4" y1="18" x2="8" y2="18"></line>
+                  </svg>
+                  <select id="sortOrderSelect">
+                    <option value="relevance">Relevance</option>
+                    <option value="newest">Newest First</option>
+                    <option value="salary-high">Salary: High to Low</option>
+                    <option value="salary-low">Salary: Low to High</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Active Filter Badges -->
+            <div class="active-filters-bar" id="activeFiltersBar" aria-label="Active filters">
+              <!-- Dynamically injected active filter chips -->
+            </div>
+
+            <!-- Job Cards Container -->
+            <div class="job-cards-list" id="jobCardsList" role="region" aria-live="polite" aria-label="Job Listings">
+              <!-- Dynamically injected job cards -->
+            </div>
+
+            <!-- Empty / No Results State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+              <div class="empty-state-icon">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </div>
+              <h3 class="empty-state-title" id="emptyStateTitle">No matching positions found</h3>
+              <p class="empty-state-desc" id="emptyStateDesc">
+                We couldn't find any roles matching your active search criteria. Try loosening your filters or resetting to see all available roles.
+              </p>
+              <button type="button" class="btn btn-primary" id="btnResetEmptyFilters">
+                Reset All Filters
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Applications Modal / Drawer -->
+  <div class="modal-overlay" id="applicationsModal" role="dialog" aria-modal="true" aria-labelledby="appsModalTitle">
+    <div class="modal-container" style="max-width: 600px;">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-header-title" id="appsModalTitle">Your Submitted Applications</h2>
+          <p class="modal-header-subtitle">Track your application reference IDs and submission history</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="btnCloseAppsModal" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="appsModalBody">
+        <!-- Injected dynamically via JS -->
+      </div>
+      <div class="modal-footer" style="justify-content: flex-end;">
+        <button type="button" class="btn btn-secondary" id="btnCloseAppsModalBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Help & Shortcuts Modal -->
+  <div class="modal-overlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+    <div class="modal-container" style="max-width: 520px;">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-header-title" id="helpModalTitle">About CareerBoard</h2>
+          <p class="modal-header-subtitle">Keyboard shortcuts and platform information</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="btnCloseHelpModal" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom: 1.5rem;">
+          <h4 style="font-weight: 700; margin-bottom: 0.5rem;">⚡ Keyboard Shortcuts</h4>
+          <ul style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.875rem;">
+            <li style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: var(--text-secondary);">Focus Search Input</span>
+              <kbd style="padding: 2px 8px; background: var(--surface-muted); border: 1px solid var(--border-color); border-radius: 4px; font-weight: 700;">/</kbd>
+            </li>
+            <li style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: var(--text-secondary);">Close Modal or Drawer</span>
+              <kbd style="padding: 2px 8px; background: var(--surface-muted); border: 1px solid var(--border-color); border-radius: 4px; font-weight: 700;">Esc</kbd>
+            </li>
+            <li style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: var(--text-secondary);">Toggle Saved View</span>
+              <kbd style="padding: 2px 8px; background: var(--surface-muted); border: 1px solid var(--border-color); border-radius: 4px; font-weight: 700;">Alt + S</kbd>
+            </li>
+          </ul>
+        </div>
+        <div style="border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          <h4 style="font-weight: 700; margin-bottom: 0.5rem;">💡 How CareerBoard Works</h4>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+            CareerBoard runs entirely in your browser using local storage. All bookmarks, search preferences, and job application drafts persist locally across page refreshes with zero tracking.
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer" style="justify-content: flex-end;">
+        <button type="button" class="btn btn-primary" id="btnCloseHelpModalBtn">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="assertive"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="index.html" class="brand-logo" aria-label="CareerBoard Home">
+            <div class="logo-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <span>Career<span class="brand-highlight">Board</span></span>
+          </a>
+          <p class="footer-desc">
+            The modern recruitment platform connecting top talent with high-impact software engineering, product, and design teams worldwide.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">For Candidates</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link">Browse All Roles</a></li>
+            <li><a href="index.html?workMode=remote" class="footer-link">Remote Positions</a></li>
+            <li><a href="index.html?experience=senior" class="footer-link">Senior & Lead Roles</a></li>
+            <li><a href="#saved" class="footer-link" id="footerSavedLink">Saved Jobs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Disciplines</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html?q=Frontend" class="footer-link">Frontend Engineering</a></li>
+            <li><a href="index.html?q=Backend" class="footer-link">Backend & Distributed Systems</a></li>
+            <li><a href="index.html?q=AI" class="footer-link">AI & Machine Learning</a></li>
+            <li><a href="index.html?q=Design" class="footer-link">Product Design & Systems</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Platform</h4>
+          <ul class="footer-links-list">
+            <li><a href="#" class="footer-link" id="footerAboutLink">About Platform</a></li>
+            <li><a href="#" class="footer-link">Accessibility Guidelines</a></li>
+            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+            <li><a href="#" class="footer-link">Security Overview</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 CareerBoard. Engineered for high-impact careers. All mock data & localStorage client-side.</p>
+        <p>Built with Vanilla HTML5 &bull; CSS3 &bull; Modern JavaScript</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
